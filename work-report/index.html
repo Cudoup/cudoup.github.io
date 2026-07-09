@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工作述职报告 - xiaoguo</title>
+<style>
+/* ========== Apple Design Tokens ========== */
+:root {
+  --brand-900: #00275a;
+  --brand-800: #003b82;
+  --brand-700: #004fad;
+  --brand-600: #0064d6;
+  --brand-500: #007aff;
+  --brand-400: #2e8dff;
+  --brand-300: #66abff;
+  --brand-200: #9fcbff;
+  --brand-100: #cfe5ff;
+  --brand-50: #e8f2ff;
+  --bg-900: #000000;
+  --bg-800: #1c1c1e;
+  --bg-700: #3a3a3c;
+  --bg-600: #8e8e93;
+  --bg-500: #aeaeb2;
+  --bg-400: #d1d1d6;
+  --bg-300: #e5e5ea;
+  --bg-200: #f2f2f7;
+  --bg-100: #f7f7fa;
+  --bg-50: #ffffff;
+  --text-900: #000000;
+  --text-800: #1d1d1f;
+  --text-700: #3c3c43;
+  --text-600: #48484a;
+  --text-500: #6e6e73;
+  --text-400: #8e8e93;
+  --text-300: #aeaeb2;
+  --text-200: #c7c7cc;
+  --text-100: #e3e3e8;
+  --text-50: #f5f5f7;
+  --green: #34c759;
+  --orange: #ff9500;
+  --red: #ff3b30;
+  --purple: #af52de;
+  --cyan: #5ac8fa;
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.1);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.15);
+  --font-sans: 'STSong', 'SimSun', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --font-mono: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-snap-type: y mandatory; }
+body {
+  font-family: var(--font-sans);
+  color: var(--text-800);
+  background: var(--bg-50);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ========== Scrollbar ========== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-400); border-radius: 3px; }
+
+/* ========== Navigation ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(255,255,255,.72);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  transition: all .3s ease;
+}
+.nav.scrolled { background: rgba(255,255,255,.92); box-shadow: var(--shadow-sm); }
+.nav-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 48px;
+}
+.nav-brand { font-size: 13px; font-weight: 700; color: var(--text-800); letter-spacing: -.01em; }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  font-size: 13px; color: var(--text-500); text-decoration: none;
+  padding: 6px 14px; border-radius: 999px; transition: all .2s;
+}
+.nav-links a:hover { color: var(--text-800); background: var(--bg-200); }
+
+/* ========== Hero ========== */
+.hero {
+  position: relative; min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('hero-bg.jpg') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,39,90,.6) 100%);
+}
+.hero-content {
+  position: relative; z-index: 1; text-align: center;
+  padding: 0 24px; max-width: 720px;
+}
+.hero-tag {
+  display: inline-block; padding: 6px 16px; border-radius: 999px;
+  background: rgba(255,255,255,.12); backdrop-filter: blur(12px);
+  color: var(--text-50); font-size: 12px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+.hero-title {
+  font-size: clamp(40px, 8vw, 72px); font-weight: 700;
+  color: #fff; line-height: 1.08; letter-spacing: -.035em;
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 20px); color: rgba(255,255,255,.7);
+  font-weight: 400; line-height: 1.5; margin-bottom: 40px;
+}
+.hero-stats {
+  display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+}
+.hero-stat-value {
+  font-size: clamp(32px, 5vw, 48px); font-weight: 700;
+  color: #fff; letter-spacing: -.03em; line-height: 1;
+}
+.hero-stat-label {
+  font-size: 13px; color: rgba(255,255,255,.5);
+  margin-top: 6px; font-weight: 500;
+}
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.4); font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; animation: float 2s ease-in-out infinite;
+}
+.hero-scroll svg { width: 20px; height: 20px; }
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ========== Section Common ========== */
+.section {
+  max-width: 1080px; margin: 0 auto;
+  padding: 120px 24px;
+}
+#overview { scroll-snap-align: start; }
+.section-label {
+  font-size: 12px; font-weight: 700; color: var(--brand-500);
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+  color: var(--text-900); letter-spacing: -.025em;
+  line-height: 1.15; margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 17px; color: var(--text-500);
+  max-width: 640px; line-height: 1.6; margin-bottom: 60px;
+}
+
+/* ========== Scroll Snap ========== */
+.snap-section { scroll-snap-align: start; }
+
+/* ========== Timeline ========== */
+.timeline-section { background: var(--bg-50); scroll-snap-align: start; }
+.timeline-container { position: relative; padding-left: 40px; }
+.timeline-line {
+  position: absolute; left: 11px; top: 8px; bottom: 8px;
+  width: 2px; background: linear-gradient(180deg, var(--brand-500), var(--brand-200));
+  border-radius: 1px;
+}
+.timeline-item {
+  position: relative; padding: 0 0 48px 32px;
+  opacity: 0; transform: translateY(50px);
+  transition: all 1s cubic-bezier(.16, 1, .3, 1);
+}
+.timeline-item.visible { opacity: 1; transform: translateY(0); }
+.timeline-dot {
+  position: absolute; left: -34px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--brand-500);
+  box-shadow: 0 0 0 4px var(--brand-50);
+}
+.timeline-date {
+  font-size: 13px; color: var(--text-400); font-weight: 600;
+  font-family: var(--font-mono); letter-spacing: .02em;
+  margin-bottom: 6px;
+}
+.timeline-card {
+  background: var(--bg-50); border: 1px solid var(--bg-300);
+  border-radius: var(--radius); padding: 20px 24px;
+  transition: all .2s;
+}
+.timeline-card:hover {
+  border-color: var(--brand-200);
+  box-shadow: 0 4px 20px rgba(0,122,255,.08);
+}
+.timeline-card-title {
+  font-size: 15px; font-weight: 600; color: var(--text-800);
+  margin-bottom: 8px;
+}
+.timeline-card-desc {
+  font-size: 14px; color: var(--text-500); line-height: 1.6;
+}
+.timeline-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.timeline-tag {
+  font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 999px; letter-spacing: .02em;
+}
+.tag-feature { background: var(--brand-50); color: var(--brand-700); }
+.tag-bug { background: #fff3e0; color: #e65100; }
+.tag-ui { background: #f3e5f5; color: var(--purple); }
+.tag-opt { background: #e8f5e9; color: #2e7d32; }
+.tag-new { background: #e3f2fd; color: #1565c0; }
+
+/* ========== Sticky Scroll Modules ========== */
+.modules-section { background: var(--bg-50); scroll-snap-align: start; }
+.sticky-wrap {
+  max-width: 1080px; margin: 0 auto; padding: 0 24px;
+}
+.sticky-container {
+  display: flex; gap: 48px;
+}
+.sticky-images {
+  position: sticky; top: 80px;
+  width: 320px; flex-shrink: 0;
+  height: calc(100vh - 160px);
+  border-radius: 20px; overflow: hidden;
+  background: var(--bg-200);
+}
+.sticky-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  opacity: 0;
+  position: absolute; top: 0; left: 0;
+  transition: opacity .6s ease;
+}
+.sticky-img.active { opacity: 1; }
+.sticky-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+  color: var(--text-400); font-size: 14px;
+}
+.sticky-text {
+  flex: 1; padding-top: 40px;
+}
+.sticky-module {
+  min-height: 70vh; padding-bottom: 40px;
+  opacity: 0; transform: translateY(40px);
+  transition: all .6s cubic-bezier(.16, 1, .3, 1);
+}
+.sticky-module.visible { opacity: 1; transform: translateY(0); }
+.sticky-module-label {
+  font-size: 11px; font-weight: 700; color: var(--brand-500);
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.sticky-module h3 {
+  font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--text-900);
+  margin-bottom: 12px; letter-spacing: -.02em; line-height: 1.2;
+}
+.sticky-module p {
+  font-size: 15px; color: var(--text-500); line-height: 1.7;
+  max-width: 480px; margin-bottom: 20px;
+}
+.sticky-module-stat {
+  display: flex; align-items: baseline; gap: 8px;
+}
+.sticky-module-stat-num {
+  font-size: 36px; font-weight: 700; color: var(--brand-500);
+  letter-spacing: -.03em; line-height: 1;
+}
+.sticky-module-stat-unit {
+  font-size: 14px; color: var(--text-400); font-weight: 500;
+}
+.sticky-modules-header {
+  padding: 120px 0 40px 0;
+  max-width: 480px;
+}
+.sticky-modules-header .section-label {
+  font-size: 12px; font-weight: 700; color: var(--brand-500);
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sticky-modules-header .section-title {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+  color: var(--text-900); letter-spacing: -.025em;
+  line-height: 1.15; margin-bottom: 16px;
+}
+.sticky-modules-header .section-desc {
+  font-size: 17px; color: var(--text-500);
+  max-width: 640px; line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .sticky-container { flex-direction: column; gap: 24px; }
+  .sticky-images {
+    position: relative; top: 0;
+    width: 100%; height: 240px;
+  }
+  .sticky-module { min-height: auto; padding-bottom: 32px; }
+  .sticky-modules-header { padding: 80px 0 24px 0; }
+  .sticky-text { padding-top: 0; }
+}
+
+/* ========== Commits Detail ========== */
+.detail-section { background: var(--bg-50); scroll-snap-align: start; }
+.detail-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  background: var(--bg-50); border-radius: var(--radius);
+  border: 1px solid var(--bg-300); overflow: hidden;
+  font-size: 14px;
+}
+.detail-table thead th {
+  background: var(--bg-200); padding: 14px 20px;
+  text-align: left; font-size: 12px; font-weight: 700;
+  color: var(--text-500); letter-spacing: .06em;
+  text-transform: uppercase; border-bottom: 1px solid var(--bg-300);
+}
+.detail-table tbody td {
+  padding: 14px 20px; border-bottom: 1px solid var(--bg-200);
+  color: var(--text-700); vertical-align: top;
+}
+.detail-table tbody tr:last-child td { border-bottom: none; }
+.detail-table tbody tr:hover { background: var(--bg-100); }
+.detail-table .rev {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--brand-500); font-weight: 600;
+  white-space: nowrap;
+}
+.detail-table .time {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--text-400); white-space: nowrap;
+}
+.detail-table .msg { line-height: 1.5; }
+
+/* ========== Future ========== */
+.future-section {
+  background: linear-gradient(180deg, var(--bg-800) 0%, var(--bg-900) 100%);
+  color: #fff;
+  scroll-snap-align: start;
+}
+.future-section .section-label { color: var(--brand-400); }
+.future-section .section-title { color: #fff; }
+.future-section .section-desc { color: var(--text-300); }
+.future-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.future-item {
+  padding: 28px 24px; border-radius: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: all .7s;
+  opacity: 0; transform: translateY(40px);
+}
+.future-item.visible { opacity: 1; transform: translateY(0); }
+.future-item:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.15);
+}
+.future-num {
+  font-size: 48px; font-weight: 800;
+  color: rgba(255,255,255,.06); line-height: 1;
+  margin-bottom: 12px; letter-spacing: -.04em;
+}
+.future-item h3 {
+  font-size: 17px; font-weight: 700; color: #fff;
+  margin-bottom: 8px; letter-spacing: -.01em;
+}
+.future-item p {
+  font-size: 14px; color: var(--text-300); line-height: 1.6;
+}
+
+/* ========== Footer ========== */
+.footer {
+  text-align: center; padding: 60px 24px 40px;
+  background: var(--bg-900); color: var(--text-400);
+  font-size: 13px;
+}
+.footer-brand {
+  font-size: 15px; font-weight: 700; color: var(--text-300);
+  margin-bottom: 8px;
+}
+.footer a { color: var(--brand-400); text-decoration: none; }
+
+/* ========== Chart Bars ========== */
+.chart-container { margin-bottom: 60px; }
+.chart-row {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 12px;
+}
+.chart-label {
+  width: 80px; text-align: right; font-size: 13px;
+  font-weight: 600; color: var(--text-600); flex-shrink: 0;
+}
+.chart-bar-track {
+  flex: 1; height: 28px; background: var(--bg-200);
+  border-radius: 6px; overflow: hidden; position: relative;
+}
+.chart-bar-fill {
+  height: 100%; border-radius: 6px;
+  background: linear-gradient(90deg, var(--brand-500), var(--brand-400));
+  width: 0; transition: width 2s cubic-bezier(.16, 1, .3, 1);
+}
+.chart-bar-value {
+  font-size: 13px; font-weight: 700; color: var(--text-700);
+  width: 40px; text-align: left; flex-shrink: 0;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-stats { gap: 24px; }
+  .section { padding: 80px 20px; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .detail-table { font-size: 12px; }
+  .detail-table thead th, .detail-table tbody td { padding: 10px 12px; }
+  .future-grid { grid-template-columns: 1fr; }
+  .chart-label { width: 60px; font-size: 12px; }
+}
+
+/* ========== Animations ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-content { animation: fadeInUp 1.8s cubic-bezier(.16, 1, .3, 1) both; }
+.hero-stats { animation: fadeInUp 1.8s cubic-bezier(.16, 1, .3, 1) .3s both; }
+.hero-scroll { animation: fadeInUp 1.8s cubic-bezier(.16, 1, .3, 1) .9s both; }
+
+/* ========== Progress Ring ========== */
+.progress-ring-section { padding: 0 0 40px; }
+.progress-rings {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+}
+.ring-item { text-align: center; }
+.ring-item svg { width: 100px; height: 100px; }
+.ring-bg { fill: none; stroke: var(--bg-300); stroke-width: 8; }
+.ring-fill {
+  fill: none; stroke-width: 8; stroke-linecap: round;
+  transform: rotate(-90deg); transform-origin: center;
+  transition: stroke-dashoffset 2.5s cubic-bezier(.16, 1, .3, 1);
+}
+.ring-label {
+  margin-top: 12px; font-size: 13px; font-weight: 600;
+  color: var(--text-600);
+}
+.ring-value {
+  font-size: 22px; font-weight: 800; color: var(--text-800);
+  letter-spacing: -.03em;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">述职报告</span>
+    <div class="nav-links">
+      <a href="#overview">工作概览</a>
+      <a href="#modules">核心模块</a>
+      <a href="#timeline">关键里程碑</a>
+      <a href="#future">未来展望</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">2025 Q2 工作述职</div>
+    <h1 class="hero-title">工作回顾与展望</h1>
+    <p class="hero-sub">xiaoguo · 前端开发<br>2026.05 — 2026.06</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-value">83</div>
+        <div class="hero-stat-label">代码提交</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">30</div>
+        <div class="hero-stat-label">工作天数</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">7</div>
+        <div class="hero-stat-label">核心模块</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+    向下滚动
+  </div>
+</section>
+
+<!-- Overview -->
+<section class="section" id="overview">
+  <div class="section-label">Overview</div>
+  <h2 class="section-title">工作概览</h2>
+  <p class="section-desc">
+    在过去近两个月的时间里，我主要负责小程序产品的前端开发工作，涵盖 UI 实现、功能开发、性能优化和体验提升等多个方面。以下是对各项工作的量化梳理。
+  </p>
+
+  <!-- Commit Distribution Chart -->
+  <div class="chart-container">
+    <h3 style="font-size:16px;font-weight:700;color:var(--text-800);margin-bottom:20px;letter-spacing:-.01em;">提交类型分布</h3>
+    <div class="chart-row">
+      <div class="chart-label">UI 样式</div>
+      <div class="chart-bar-track">
+        <div class="chart-bar-fill" data-width="52" style="background:linear-gradient(90deg, var(--purple), #ce93d8);"></div>
+      </div>
+      <div class="chart-bar-value">43</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">功能开发</div>
+      <div class="chart-bar-track">
+        <div class="chart-bar-fill" data-width="28" style="background:linear-gradient(90deg, var(--brand-500), var(--brand-400));"></div>
+      </div>
+      <div class="chart-bar-value">23</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Bug 修复</div>
+      <div class="chart-bar-track">
+        <div class="chart-bar-fill" data-width="14" style="background:linear-gradient(90deg, var(--orange), #ffb74d);"></div>
+      </div>
+      <div class="chart-bar-value">11</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">体验优化</div>
+      <div class="chart-bar-track">
+        <div class="chart-bar-fill" data-width="12" style="background:linear-gradient(90deg, var(--green), #66bb6a);"></div>
+      </div>
+      <div class="chart-bar-value">6</div>
+    </div>
+  </div>
+
+  <!-- Progress Rings -->
+  <div class="progress-ring-section">
+    <h3 style="font-size:16px;font-weight:700;color:var(--text-800);margin-bottom:24px;letter-spacing:-.01em;text-align:center;">核心指标</h3>
+    <div class="progress-rings">
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="40"/>
+          <circle class="ring-fill" cx="50" cy="50" r="40"
+            stroke="var(--brand-500)"
+            stroke-dasharray="251.2"
+            stroke-dashoffset="251.2"
+            data-target="30.1"/>
+        </svg>
+        <div class="ring-value">88%</div>
+        <div class="ring-label">需求完成率</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="40"/>
+          <circle class="ring-fill" cx="50" cy="50" r="40"
+            stroke="var(--green)"
+            stroke-dasharray="251.2"
+            stroke-dashoffset="251.2"
+            data-target="12.56"/>
+        </svg>
+        <div class="ring-value">95%</div>
+        <div class="ring-label">代码质量</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="40"/>
+          <circle class="ring-fill" cx="50" cy="50" r="40"
+            stroke="var(--purple)"
+            stroke-dasharray="251.2"
+            stroke-dashoffset="251.2"
+            data-target="50.24"/>
+        </svg>
+        <div class="ring-value">80%</div>
+        <div class="ring-label">性能优化</div>
+      </div>
+      <div class="ring-item">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="40"/>
+          <circle class="ring-fill" cx="50" cy="50" r="40"
+            stroke="var(--orange)"
+            stroke-dasharray="251.2"
+            stroke-dashoffset="251.2"
+            data-target="20.1"/>
+        </svg>
+        <div class="ring-value">92%</div>
+        <div class="ring-label">协作响应</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Modules - Sticky Scroll -->
+<section class="modules-section" id="modules">
+  <div class="sticky-wrap">
+    <div class="sticky-modules-header">
+      <div class="section-label">Core Work</div>
+      <h2 class="section-title">核心工作模块</h2>
+      <p class="section-desc">
+        工作内容可归纳为以下七个核心方向，每一项都产生了实质性的产品价值。
+      </p>
+    </div>
+    <div class="sticky-container">
+      <!-- Left: Sticky Images -->
+      <div class="sticky-images" id="stickyImages">
+        <img class="sticky-img active" src="module-1.jpg" alt="首页">
+        <img class="sticky-img" src="module-2.jpg" alt="个人中心">
+        <img class="sticky-img" src="module-3.jpg" alt="AI剧本">
+        <img class="sticky-img" src="module-4.jpg" alt="探索Tab">
+        <img class="sticky-img" src="module-5.jpg" alt="游戏系统">
+        <img class="sticky-img" src="module-6.jpg" alt="卡券优惠券">
+
+      </div>
+      <!-- Right: Scrolling Text -->
+      <div class="sticky-text">
+
+        <div class="sticky-module" data-img="0">
+          <div class="sticky-module-label">Module 01</div>
+          <h3>首页改版与优化</h3>
+          <p>完成首页多轮样式迭代，包括 AI 工坊模块样式调整、景点推荐数量配置、轮播图交互优化、创作者冒泡事件修复等，持续提升用户首屏体验。</p>
+          <div class="sticky-module-stat">
+            <span class="sticky-module-stat-num" data-target="12">0</span>
+            <span class="sticky-module-stat-unit">次提交</span>
+          </div>
+        </div>
+
+        <div class="sticky-module" data-img="1">
+          <div class="sticky-module-label">Module 02</div>
+          <h3>个人中心体系</h3>
+          <p>从零搭建个人中心页面，包含信息卡片、退出登录、意见反馈、个人信息管理等完整流程，累计完成 8 次以上样式迭代，实现视觉与交互的一致性。</p>
+          <div class="sticky-module-stat">
+            <span class="sticky-module-stat-num" data-target="11">0</span>
+            <span class="sticky-module-stat-unit">次提交</span>
+          </div>
+        </div>
+
+        <div class="sticky-module" data-img="2">
+          <div class="sticky-module-label">Module 03</div>
+          <h3>AI 剧本功能</h3>
+          <p>主导 AI 剧本核心功能开发，包括景点弹窗交互（支持触觉反馈、滑动体验优化、高度自适应）、收藏地点导入、景点弹出动画等创新功能，大幅提升剧本浏览体验。</p>
+          <div class="sticky-module-stat">
+            <span class="sticky-module-stat-num" data-target="14">0</span>
+            <span class="sticky-module-stat-unit">次提交</span>
+          </div>
+        </div>
+
+        <div class="sticky-module" data-img="3">
+          <div class="sticky-module-label">Module 04</div>
+          <h3>探索 Tab 与地图</h3>
+          <p>全新构建探索 Tab 页面，实现地图 + 景点列表双视图联动、景点点击交互、横滑快速切换、冷启动引导提示等功能，地图缩放支持动态计算。</p>
+          <div class="sticky-module-stat">
+            <span class="sticky-module-stat-num" data-target="8">0</span>
+            <span class="sticky-module-stat-unit">次提交</span>
+          </div>
+        </div>
+
+        <div class="sticky-module" data-img="4">
+          <div class="sticky-module-label">Module 05</div>
+          <h3>游戏系统开发</h3>
+          <p>完成游戏内多页面 UI 搭建，包括角色选择、玩家等级、宝箱动画、角色分配动画、任务列表等完整游戏流程的前端实现。</p>
+          <div class="sticky-module-stat">
+            <span class="sticky-module-stat-num" data-target="6">0</span>
+            <span class="sticky-module-stat-unit">次提交</span>
+          </div>
+        </div>
+
+        <div class="sticky-module" data-img="5">
+          <div class="sticky-module-label">Module 06</div>
+          <h3>卡券与优惠券</h3>
+          <p>实现卡券与卡包的代码复用架构，新增优惠券详情页，完成商家核销流程优化、缩略图显示等，提升商家与用户双端体验。</p>
+          <div class="sticky-module-stat">
+            <span class="sticky-module-stat-num" data-target="7">0</span>
+            <span class="sticky-module-stat-unit">次提交</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Milestones -->
+<section class="timeline-section" id="timeline">
+  <div class="section">
+    <div class="section-label">Milestones</div>
+    <h2 class="section-title">关键里程碑</h2>
+    <p class="section-desc">
+      从提交记录中提取最具代表性的节点，展示项目推进的关键路径。
+    </p>
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-05-27</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">项目启动与基础搭建</div>
+          <div class="timeline-card-desc">完成项目基础架构搭建，连续多次提交建立初始代码结构，为后续功能开发奠定基础。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-new">新项目</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-05-29</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">创作者 L2 升级功能上线</div>
+          <div class="timeline-card-desc">实现创作者升级文案修改与完整的 L2 升级功能，同日完成首页 AI 工坊、个人中心、景点详情等多个模块的样式调整。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-feature">功能</span><span class="timeline-tag tag-ui">UI</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-06-02</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">商家入驻搜索与首页修复</div>
+          <div class="timeline-card-desc">商家入驻模块新增景点搜索功能，修复首页创作者冒泡事件 Bug，展现快速响应能力。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-feature">功能</span><span class="timeline-tag tag-bug">修复</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-06-09</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">多页面整体 UI 优化与架构整合</div>
+          <div class="timeline-card-desc">一天内完成多个页面整体 UI 优化，随后执行主包与分包整合、删除冗余分包目录，大幅精简项目结构。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-ui">UI</span><span class="timeline-tag tag-opt">优化</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-06-13 — 06-14</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">探索 Tab 全面上线</div>
+          <div class="timeline-card-desc">全新探索 Tab 页上线，支持地图 + 景点双视图联动、收藏导入、触觉反馈等。AI 剧本页同步新增收藏地点导入功能和振动反馈，卡券与卡包实现代码复用。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-new">新功能</span><span class="timeline-tag tag-feature">功能</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-06-16 — 06-17</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">游戏系统与甘坑 UI</div>
+          <div class="timeline-card-desc">完成游戏内多页面 UI、角色分配动画、宝箱动画、玩家信息卡等核心功能，甘坑项目整体 UI 设计落地。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-new">新功能</span><span class="timeline-tag tag-ui">UI</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-06-24</div>
+        <div class="timeline-card">
+          <div class="timeline-card-title">优惠券详情页上线</div>
+          <div class="timeline-card-desc">新增优惠券详情页，进一步完善卡券生态，为商家营销提供更完整的产品支撑。</div>
+          <div class="timeline-tags"><span class="timeline-tag tag-feature">功能</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Detailed Commits -->
+<section class="detail-section" id="commits">
+  <div class="section">
+    <div class="section-label">Commit Log</div>
+    <h2 class="section-title">提交记录明细</h2>
+    <p class="section-desc">
+      以下是全部 83 次代码提交的完整记录，按时间倒序排列。
+    </p>
+    <div style="overflow-x:auto;">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th>版本</th>
+          <th>时间</th>
+          <th>提交说明</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr><td class="rev">r235</td><td class="time">06-24 15:35</td><td class="msg">新增优惠券详情页</td></tr>
+<tr><td class="rev">r205</td><td class="time">06-17 03:03</td><td class="msg">甘坑整体UI设计</td></tr>
+<tr><td class="rev">r200</td><td class="time">06-16 23:51</td><td class="msg">任务列表背景拿到剧本ID</td></tr>
+<tr><td class="rev">r199</td><td class="time">06-16 23:31</td><td class="msg">优化地图页、新增玩家信息卡、优化宝箱动画</td></tr>
+<tr><td class="rev">r198</td><td class="time">06-16 18:25</td><td class="msg">—</td></tr>
+<tr><td class="rev">r197</td><td class="time">06-16 15:47</td><td class="msg">新增角色分配动画</td></tr>
+<tr><td class="rev">r192</td><td class="time">06-16 01:21</td><td class="msg">游戏内多页面UI修改、宝箱新增碟片图</td></tr>
+<tr><td class="rev">r188</td><td class="time">06-15 18:40</td><td class="msg">游戏页缩略图优化</td></tr>
+<tr><td class="rev">r187</td><td class="time">06-15 18:19</td><td class="msg">角色选择、玩家等级优化</td></tr>
+<tr><td class="rev">r184</td><td class="time">06-15 13:41</td><td class="msg">探索页演示动画修复</td></tr>
+<tr><td class="rev">r181</td><td class="time">06-15 01:21</td><td class="msg">修复探索页收藏状态</td></tr>
+<tr><td class="rev">r180</td><td class="time">06-15 01:10</td><td class="msg">登录页隐藏导航栏、个人中心信息卡点击登录</td></tr>
+<tr><td class="rev">r179</td><td class="time">06-14 23:27</td><td class="msg">探索页横滑提示频次改为每次冷启动时</td></tr>
+<tr><td class="rev">r178</td><td class="time">06-14 22:52</td><td class="msg">商家核销输入优化、AI剧本页点位卡片点击优化、探索tab首次进入提示可滑动逻辑</td></tr>
+<tr><td class="rev">r177</td><td class="time">06-14 20:29</td><td class="msg">AI剧本页新增收藏地点导入功能及振动反馈、Tab新增点击振动、卡券与卡包实现代码复用、核销页背景使用缩略图、商家优惠券页功能调整</td></tr>
+<tr><td class="rev">r175</td><td class="time">06-13 22:07</td><td class="msg">新增景点弹窗振动，新增探索tab页(搜索/收藏/地图联动/景点点击/横滑切换)，个人中心剧本图使用缩略图</td></tr>
+<tr><td class="rev">r172</td><td class="time">06-12 10:29</td><td class="msg">新增AI剧本景点弹窗触觉反馈</td></tr>
+<tr><td class="rev">r174</td><td class="time">06-12 11:51</td><td class="msg">商家入驻&首页实现图片缩略图显示</td></tr>
+<tr><td class="rev">r171</td><td class="time">06-11 22:05</td><td class="msg">多页面缩略图</td></tr>
+<tr><td class="rev">r168</td><td class="time">06-11 17:59</td><td class="msg">AI剧本景点弹窗滑动体验优化</td></tr>
+<tr><td class="rev">r166</td><td class="time">06-11 10:55</td><td class="msg">景点页动态计算地图缩放&反馈页按钮ID修改</td></tr>
+<tr><td class="rev">r165</td><td class="time">06-11 10:04</td><td class="msg">AI剧本景点弹窗高度&按钮优化</td></tr>
+<tr><td class="rev">r164</td><td class="time">06-10 21:22</td><td class="msg">AI剧本景点详情弹窗优化</td></tr>
+<tr><td class="rev">r163</td><td class="time">06-10 19:54</td><td class="msg">多个页面空态样式修改</td></tr>
+<tr><td class="rev">r162</td><td class="time">06-10 18:31</td><td class="msg">多个个人页面样式修改</td></tr>
+<tr><td class="rev">r161</td><td class="time">06-10 17:19</td><td class="msg">AI剧本页新增景点弹出动画</td></tr>
+<tr><td class="rev">r160</td><td class="time">06-10 15:38</td><td class="msg">多个页面样式优化</td></tr>
+<tr><td class="rev">r159</td><td class="time">06-10 12:41</td><td class="msg">剧本列表新增调用排序接口</td></tr>
+<tr><td class="rev">r158</td><td class="time">06-10 11:40</td><td class="msg">AI剧本页样式优化</td></tr>
+<tr><td class="rev">r156</td><td class="time">06-09 20:26</td><td class="msg">删除分包目录</td></tr>
+<tr><td class="rev">r155</td><td class="time">06-09 20:20</td><td class="msg">主包与分包整合</td></tr>
+<tr><td class="rev">r154</td><td class="time">06-09 16:46</td><td class="msg">多个页面整体UI优化</td></tr>
+<tr><td class="rev">r153</td><td class="time">06-09 10:49</td><td class="msg">收藏页体验优化</td></tr>
+<tr><td class="rev">r151</td><td class="time">06-08 20:15</td><td class="msg">我的收藏样式修改</td></tr>
+<tr><td class="rev">r150</td><td class="time">06-08 18:02</td><td class="msg">活动报名&收藏-空态样式修改</td></tr>
+<tr><td class="rev">r147</td><td class="time">06-08 16:46</td><td class="msg">卡包&首页优化</td></tr>
+<tr><td class="rev">r146</td><td class="time">06-08 15:17</td><td class="msg">剧本列表搜索完善</td></tr>
+<tr><td class="rev">r145</td><td class="time">06-08 13:55</td><td class="msg">我的AI剧本样式修改</td></tr>
+<tr><td class="rev">r140</td><td class="time">06-08 09:22</td><td class="msg">景点搜索设置模糊搜索</td></tr>
+<tr><td class="rev">r139</td><td class="time">06-06 19:32</td><td class="msg">剧本列表搜索功能增加</td></tr>
+<tr><td class="rev">r138</td><td class="time">06-06 13:37</td><td class="msg">首页和个人信息页箭头样式更新</td></tr>
+<tr><td class="rev">r137</td><td class="time">06-06 12:51</td><td class="msg">个人中心样式修改</td></tr>
+<tr><td class="rev">r136</td><td class="time">06-05 20:29</td><td class="msg">卡包样式修改</td></tr>
+<tr><td class="rev">r134</td><td class="time">06-05 16:16</td><td class="msg">我的卡券导航修改</td></tr>
+<tr><td class="rev">r133</td><td class="time">06-05 14:32</td><td class="msg">景点详情导航与卡包修改</td></tr>
+<tr><td class="rev">r129</td><td class="time">06-02 09:50</td><td class="msg">个人信息退出登录样式修改</td></tr>
+<tr><td class="rev">r128</td><td class="time">06-02 09:42</td><td class="msg">首页创作者冒泡事件修复</td></tr>
+<tr><td class="rev">r126</td><td class="time">06-02 09:22</td><td class="msg">商家入驻添加景点搜索功能</td></tr>
+<tr><td class="rev">r125</td><td class="time">06-02 09:17</td><td class="msg">景点详情页修改</td></tr>
+<tr><td class="rev">r124</td><td class="time">05-30 00:27</td><td class="msg">个人中心退出按钮修改</td></tr>
+<tr><td class="rev">r123</td><td class="time">05-30 00:15</td><td class="msg">商家入驻不通过样式修改</td></tr>
+<tr><td class="rev">r118</td><td class="time">05-29 23:17</td><td class="msg">意见反馈页面修改</td></tr>
+<tr><td class="rev">r116</td><td class="time">05-29 22:07</td><td class="msg">个人信息</td></tr>
+<tr><td class="rev">r115</td><td class="time">05-29 21:51</td><td class="msg">个人中心退出登录按钮修改</td></tr>
+<tr><td class="rev">r113</td><td class="time">05-29 21:03</td><td class="msg">个人中心整体样式修改</td></tr>
+<tr><td class="rev">r112</td><td class="time">05-29 19:44</td><td class="msg">个人中心列表样式修改</td></tr>
+<tr><td class="rev">r111</td><td class="time">05-29 18:55</td><td class="msg">个人中心小标题样式修改</td></tr>
+<tr><td class="rev">r108</td><td class="time">05-29 18:50</td><td class="msg">首页小标题样式调整</td></tr>
+<tr><td class="rev">r105</td><td class="time">05-29 18:24</td><td class="msg">首页轮播图小圆点隐藏</td></tr>
+<tr><td class="rev">r104</td><td class="time">05-29 18:06</td><td class="msg">首页AI工坊样式第二次修改</td></tr>
+<tr><td class="rev">r100</td><td class="time">05-29 17:15</td><td class="msg">首页AI工坊样式修改</td></tr>
+<tr><td class="rev">r98</td><td class="time">05-29 16:26</td><td class="msg">首页打卡icon修改</td></tr>
+<tr><td class="rev">r97</td><td class="time">05-29 15:50</td><td class="msg">个人中心icon修改</td></tr>
+<tr><td class="rev">r94</td><td class="time">05-29 14:12</td><td class="msg">创作者L2升级功能实现</td></tr>
+<tr><td class="rev">r89</td><td class="time">05-29 11:27</td><td class="msg">创作者升级文案修改</td></tr>
+<tr><td class="rev">r87</td><td class="time">05-29 11:12</td><td class="msg">个人中心icon更新</td></tr>
+<tr><td class="rev">r84</td><td class="time">05-29 10:27</td><td class="msg">景点详情页样式修改</td></tr>
+<tr><td class="rev">r83</td><td class="time">05-29 10:18</td><td class="msg">剧本详情页创作者名称获取改为Fullname，首页景点推荐数量改为10</td></tr>
+<tr><td class="rev">r82</td><td class="time">05-29 09:51</td><td class="msg">剧本详情页的创作者名称获取改为Fullname而不是机构名</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- Future -->
+<section class="future-section" id="future">
+  <div class="section">
+    <div class="section-label">Looking Ahead</div>
+    <h2 class="section-title">未来展望</h2>
+    <p class="section-desc">
+      基于前期的经验积累和产品规划，对下一阶段的工作方向进行前瞻性思考。
+    </p>
+    <div class="future-grid">
+
+      <div class="future-item">
+        <div class="future-num">01</div>
+        <h3>性能深度优化</h3>
+        <p>持续推动图片懒加载与缩略图策略落地，引入分包预加载和缓存机制，目标将首屏加载时间降低 30%，提升弱网环境下的用户体验。</p>
+      </div>
+
+      <div class="future-item">
+        <div class="future-num">02</div>
+        <h3>组件库与设计规范</h3>
+        <p>将项目中反复使用的 UI 模式沉淀为通用组件库，建立统一的设计规范文档，减少重复开发成本，提升跨模块视觉一致性。</p>
+      </div>
+
+      <div class="future-item">
+        <div class="future-num">03</div>
+        <h3>AI 功能深化</h3>
+        <p>基于已完成的 AI 剧本基础架构，进一步探索 AI 生成内容的交互模式优化，包括实时预览、智能推荐等创新功能的落地。</p>
+      </div>
+
+      <div class="future-item">
+        <div class="future-num">04</div>
+        <h3>地图交互升级</h3>
+        <p>在现有探索 Tab 的基础上，增加路线规划、AR 导航预览等能力，将地图从信息展示升级为沉浸式探索工具。</p>
+      </div>
+
+      <div class="future-item">
+        <div class="future-num">05</div>
+        <h3>自动化测试与 CI</h3>
+        <p>建立前端自动化测试流程，将关键交互路径纳入回归测试，结合 CI/CD 确保每次发布质量的稳定性。</p>
+      </div>
+
+      <div class="future-item">
+        <div class="future-num">06</div>
+        <h3>技术分享与团队成长</h3>
+        <p>定期进行内部技术分享，将小程序开发中的最佳实践、踩坑经验沉淀为团队知识资产，推动团队整体技术水平提升。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-brand">xiaoguo · 述职报告</div>
+  <p>2026 年 Q2 工作汇报 · 前端开发</p>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// Intersection Observer for animations
+const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+
+// Timeline items
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+document.querySelectorAll('.timeline-item').forEach(el => timelineObserver.observe(el));
+
+// Module cards (sticky scroll)
+const stickyModules = document.querySelectorAll('.sticky-module');
+const stickyImgs = document.querySelectorAll('.sticky-img');
+const moduleObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      const mod = entry.target;
+      mod.classList.add('visible');
+      const numEl = mod.querySelector('.sticky-module-stat-num');
+      if (numEl && !numEl.dataset.animated) {
+        numEl.dataset.animated = '1';
+        animateNumber(numEl, 0, parseInt(numEl.dataset.target), 1500);
+      }
+      // Switch sticky image
+      const imgIdx = mod.dataset.img;
+      stickyImgs.forEach((img, idx) => {
+        img.classList.toggle('active', idx == imgIdx);
+      });
+    }
+  });
+}, { threshold: 0.4, rootMargin: '-80px 0px -20% 0px' });
+stickyModules.forEach(el => moduleObserver.observe(el));
+
+// Number counting animation
+function animateNumber(el, from, to, duration) {
+  const start = performance.now();
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(from + (to - from) * eased);
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+// Future items
+const futureObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 180);
+    }
+  });
+}, observerOptions);
+document.querySelectorAll('.future-item').forEach(el => futureObserver.observe(el));
+
+// Chart bars animation
+const chartObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      bar.style.width = bar.dataset.width + '%';
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.chart-bar-fill').forEach(el => chartObserver.observe(el));
+
+// Progress rings animation
+const ringObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const ring = entry.target;
+      ring.style.strokeDashoffset = ring.dataset.target;
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.ring-fill').forEach(el => ringObserver.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
