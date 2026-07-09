@@ -1,0 +1,372 @@
+/* 用于首页以及末页的整体格式 */
+:root {
+	--view-minmax: calc((100vw - 500px) / (1920 - 500));
+}
+
+
+/* 用于整个页面的格式 */
+body {
+	margin: 0;
+}
+
+
+/* 以下四项为导航栏 */
+nav {
+    position: fixed;
+    left: 20px;
+    bottom: 0;
+    z-index: 2333;
+    transform: rotate(-90deg) translateZ(0);
+    transform-origin: 0 0;
+}
+
+nav a.clip {
+    height: 4px;
+    width: 4px;
+    background: #fff;
+    border-radius:100%
+}
+
+nav a {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    opacity: .6;
+    transition: all .3s;
+    vertical-align:middle
+}
+
+nav a.active, nav a:hover {
+    text-decoration: underline;
+    opacity:1
+}
+
+
+/* 以下两项用于首页尺寸 */
+#intro {
+	--size-h1: calc(42px + (88 - 42) * var(--view-minmax));
+	--size-h2: calc(20px + (28 - 20) * var(--view-minmax));
+	min-height: 110vh;
+}
+
+@media (min-width: 600px) {
+	#intro {
+		display: flex;
+		width: 100vw;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+
+/* 用于首页的文字格式 */
+h1, h2, p {
+	margin: 0;
+	font-weight: normal;
+	color: #404040;
+}
+
+
+/* 下面两项为首页的字体 */
+#intro h1 {
+	grid-area: h1;
+	line-height: calc(var(--size-h1) * 1.382);
+	font-size: var(--size-h1);
+	align-self: center;
+	transform: translateZ(0);
+}
+
+#intro h2 {
+	grid-area: h2;
+	line-height: calc(var(--size-h2) + 10px);
+	font-size: var(--size-h2);
+	opacity: .8;
+}
+
+
+/* 首页两侧的框 */
+#intro header {
+	display: grid;
+	grid-template-columns: minmax(20%, 330px) 75px minmax(max-content, 1fr) 75px minmax(20%, 300px);
+	grid-template-rows: 176px 55px minmax(max-content, 1fr) 35px 175px;
+	grid-template-areas:
+		". . . . rs"
+		"ls . . . rs"
+		"ls . h1 . rs"
+		"ls . h2 . rs"
+		"ls . h2 . .";
+	transform: translateY(-88px);
+}
+
+
+/* 以下三项是首页两侧的框 */
+.slice {
+	width: 100%;
+	height: 100%;
+	background-image: url("images/me.jpg");
+	background-size: cover;
+	box-shadow: 0 20px 90px 0 rgba(0, 0, 0, .08), 0 9px 30px 0 rgba(0, 0, 0, .1);
+}
+.slice.left {
+	grid-area: ls;
+	background-position: left;
+}
+.slice.right {
+	grid-area: rs;
+	background-position: right;
+}
+
+
+/* 以下五项为添加的简介部分 */
+.main_intro {
+	margin-left: 200px;
+	margin-top: 100px;
+}
+
+.main_intro h2 {
+	color: #ffffff;
+	margin-bottom: 30px;
+	letter-spacing: .1em;
+}
+
+.main_intro h2 span {
+	color: #9c9c9c;
+}
+
+.introduct {
+	width: 68%;
+	line-height:2em;
+	font-size: 17px;
+	float: left;
+}
+
+p {
+	color: #ffffff;
+}
+
+/* 用于头像部分 */
+.photo {
+	width: 170px;
+	border-radius: 100%;
+	margin-left: 40px;
+	margin-top: 5px;
+}
+
+
+/* 用于调整技能整体布局 */
+ul.skill {
+	margin-top:50px;
+	padding: 0;
+}
+
+
+/* 用于调整技能 整体布局 */
+ul.skill li {
+    padding: 10px 0;
+    width: 38%;
+    float: left;
+    margin-right:5%
+}
+
+/* 用于调整技能 文字布局 */
+ul.skill li p {
+    display: inline-block;
+    width: 36%;
+	font-size:14px;
+	margin-bottom: 5px;
+	margin-top: 8px;
+}
+
+
+/* 用于做出技能bar */
+ul.skill li .progress {
+    display: inline-block;
+    width: 70%;
+    height: 3px;
+    background-color:  hsla(0, 0%, 100%, .2);
+    vertical-align:middle
+}
+
+
+/* 以下两项用于做出技能隐藏文字 */
+ul.skill li .progress span {
+    font-size: 13px;
+    color: #ffffff;
+    opacity: 0;
+    position: relative;
+    top: -5px;
+    letter-spacing: .2em;
+    transition:all .3s
+}
+
+ul.skill li:hover .progress span {
+    opacity: 1;
+    top:0
+}
+
+
+/* 用于绘制技能进度条 */
+ul.skill li .progress div {
+    background-color: #fff;
+    height: 3px;
+}
+
+
+/* 使进度条具有滑动效果 */
+ul.skill li .progress div {
+    -webkit-animation: progressin 7s;
+}
+
+
+/* 用于绘制进度条动画效果 */
+@-webkit-keyframes progressin {
+    0% {
+        width:0
+    }
+}
+
+
+/* 用于调整gate整体布局 */
+.main_right {
+    margin-right: 200px;
+}
+
+/* 用于gate整体宽度控制 */
+.find .item span {
+    display: inline-block;
+    width:350px
+}
+
+
+/* 用于gate的文字格式 */
+.find a {
+    color: #fff;
+}
+
+
+/* 用于gate第一行控制 */
+.find .one .item {
+    width: 47.5%;
+    margin:10px 1.2%;
+}
+
+
+/* gate内item整体布局 */
+.find .item {
+    position: relative;
+    width: 30.9%;
+    height: 80px;
+    line-height: 80px;
+	margin: 10px 1.2%;
+	margin-top: 15px;
+    padding: 5px 0;
+    text-align: center;
+    float: left;
+}
+
+/* 用于彩色块状背景 */
+.find .item .bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.8%;
+    transition:all .15s
+}
+
+
+/* 用于彩色块状背景的弹出 */
+.find .item:hover .bg {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+/* 用于文字的上层悬浮 */
+.find .item .inner {
+    position: relative;
+}
+
+
+/* 末页的最后的文字部分 */
+.content p{
+	--size-p: calc(22px + (32 - 22) * var(--view-minmax));
+	line-height: calc(var(--size-p) + 18px);
+	font-size: var(--size-p);
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+
+/* 用于调整末页文字的整体 宽度 */
+.content {
+	width: 29%;
+	padding: 30px 60px 30px 10px;
+}
+
+
+/* 用于末页文字效果 */
+.content p {
+	font-size: 24px;
+	line-height: 41px;
+	color: #fdfdfd;
+	text-align: left;
+}
+
+
+/* 用于末页文字效果+彩色渐变 */
+p span {
+	padding-top: 6px;
+	padding-bottom: 1px;
+	color: transparent;
+	-webkit-background-clip: text;
+}
+p span.a {
+	background-image: linear-gradient(to right, #24c6dc, #514a9d);
+}
+p span.b {
+	background-image: linear-gradient(to right, #f3cd13, #f35858);
+}
+p span.c {
+	background-image: linear-gradient(to right, #dd5e89, #f7bb97);
+}
+p span.d {
+	background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+}
+p span.e {
+	background-image: linear-gradient(to right, #4cb8c4, #3cd3ad);
+}
+p span.f {
+	background-image: linear-gradient(to right, #4776e6, #8e54e9);
+}
+
+
+
+/* 以下两项用于整页的黑色背景 */
+#backdrop {
+	position: absolute;
+	background-color: #000;
+	width: 100vw;
+	height: 100%;
+	bottom: 0;
+	z-index: -1;
+}
+
+.products {
+	--padding: 1.25em;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 80vh;
+}
+
+
+/* 用于页面的黑白渐变效果 */
+.gradient{
+    height: 70px;
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#000000 100%);
+}
