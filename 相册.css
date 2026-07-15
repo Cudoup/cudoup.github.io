@@ -380,3 +380,48 @@ img {
 .others .luqu span {
     font-size: 40px;
 }
+
+/* 移动端：摄影内容按图片、说明的自然顺序纵向展示 */
+@media (max-width: 768px) {
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { padding-bottom: 72px; }
+    nav {
+        left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 4px;
+        overflow-x: auto; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(255,255,255,.92); border-top: 1px solid #ddd;
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transform: none;
+    }
+    nav a { flex: 0 0 auto; margin: 0; padding: 8px 10px; font-size: 14px; white-space: nowrap; }
+    nav a.clip { display: none; }
+    .title_big { height: auto; min-height: 116px; margin-bottom: 24px; border-radius: 0 0 20px 20px; }
+    .title, .center { width: calc(100% - 36px); }
+    .title_text { height: auto; float: none; padding: 18px 0 8px; }
+    .title_text .one { font-size: 28px; }
+    .title_text .one .big { font-size: 48px; }
+    .title_right { float: none; margin: 0; padding-bottom: 18px; font-size: 14px; }
+    .center .one img, .two img, .school_img_one, .school_img_two,
+    .course_img_one, .course_img_two, .ultra_img_one, .ultra_img_two,
+    .ultra_img_three, .others img, .others .dou2, .img_a {
+        display: block; width: 100%; max-width: 100%; height: auto;
+        float: none; margin: 22px 0; border-radius: 16px;
+    }
+    .center .one .text, .one .text_two, .two .left, .two .right, .two .text,
+    .two .right .text, .school_text_one, .school_text_two, .course_text_one,
+    .course_text_two, .ultra_text_one, .ultra_text_two, .ultra_text_three {
+        width: 100%; height: auto; float: none; margin: 20px 0;
+        padding: 0 0 12px; text-align: left; border-left: 0;
+    }
+    .one .text .one, .center .one span.big { margin: 0; }
+    .center .one span.big { font-size: 54px; }
+    .two, .school, .school .school_one, .school .school_two, .course, .ultra {
+        width: 100%; height: auto; float: none; margin-top: 42px;
+    }
+    .two::after, .school::after, .course::after, .ultra::after, .others::after {
+        content: ""; display: block; clear: both;
+    }
+    .school_one .ps, .course .tip, .ultra .ps_two, .others .dou_text, .luqu {
+        float: none; width: 100%; margin: 18px 0; font-size: 18px; line-height: 1.7;
+    }
+    .center p { overflow-wrap: anywhere; }
+}

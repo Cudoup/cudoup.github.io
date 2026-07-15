@@ -215,3 +215,40 @@ img {
     font-size: 20px;
     font-weight: 450;
 }
+
+/* 移动端单列阅读布局 */
+@media (max-width: 768px) {
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { margin: 0; padding: 0 18px 72px; }
+    nav {
+        left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 4px;
+        overflow-x: auto; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(255,255,255,.92); border-top: 1px solid #ddd;
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transform: none;
+    }
+    nav a { flex: 0 0 auto; margin: 0; padding: 8px 10px; font-size: 14px; white-space: nowrap; }
+    nav a.clip { display: none; }
+    .big { width: 100%; }
+    .title { padding-top: 12px; }
+    .title h1 { font-size: 28px; line-height: 1.25; }
+    .title span { display: block; margin-top: 10px; }
+    .main { padding-top: 20px; }
+    .main_left { width: 100%; float: none; }
+    .main_left ul { display: flex; gap: 8px; width: 100%; margin: 0 0 24px; padding: 0; overflow-x: auto; }
+    .main_left li { flex: 0 0 auto; width: auto; padding: 0; }
+    .main_left li a { display: block; padding: 8px 12px; border-radius: 999px; background: #f2f2f2; font-size: 14px; }
+    .main_left .logo { display: none; }
+    .main_right, .body { width: 100%; height: auto; float: none; }
+    img, .img_one, .img_two, .img_three, .img_four {
+        display: block; width: 100%; max-width: 100%; height: auto; float: none;
+        margin: 24px 0; border-radius: 18px;
+    }
+    .text_div_one, .text_two, .text_div_three, .text_div_four, .text_div_five {
+        width: 100%; float: none; margin: 22px 0; padding: 0;
+        writing-mode: horizontal-tb; text-align: left;
+    }
+    .text_one, .text_two, .text_three, .text_five { font-size: 16px; line-height: 1.85; }
+    .text_two span, .text_div_four span, .text_three span.big { font-size: 30px; }
+    .text_div_four .p_one { margin-left: 0; }
+}
